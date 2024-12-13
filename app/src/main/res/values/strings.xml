@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">AOL_MobileProgramming</string>
     <string name="register_question"><u>Don\'t have an account? Register</u></string>
+    <string name="login_text">Already have an account? <font fgcolor="#6F9962">Login</font></string>
 </resources>
