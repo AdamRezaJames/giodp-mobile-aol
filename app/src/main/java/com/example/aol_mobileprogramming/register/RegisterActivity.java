@@ -1,6 +1,10 @@
 package com.example.aol_mobileprogramming.register;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,8 +13,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.aol_mobileprogramming.R;
+import com.example.aol_mobileprogramming.login.LoginActivity;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    TextView welcomeText, registerEmailText, registerPassText, loginQuestionText;
+    Button authGoogleButton;
+    EditText registerPassInput, registerEmailTextInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +30,11 @@ public class RegisterActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        loginQuestionText = findViewById(R.id.loginQuestionText);
+        loginQuestionText.setOnClickListener(v -> {
+            Intent in = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(in);
         });
     }
 }
