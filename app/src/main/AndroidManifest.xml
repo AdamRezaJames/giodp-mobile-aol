@@ -13,16 +13,7 @@
         android:theme="@style/Theme.AOL_MobileProgramming"
         tools:targetApi="31">
         <activity
-            android:name=".about.AboutActivity"
-            android:exported="false" />
-        <activity
-            android:name=".coursedetail.CourseDetailActivity"
-            android:exported="false" />
-        <activity
             android:name=".payment.PaymentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".dashboard.DashboardActivity"
             android:exported="false" />
         <activity
             android:name=".cart.CartActivity"
