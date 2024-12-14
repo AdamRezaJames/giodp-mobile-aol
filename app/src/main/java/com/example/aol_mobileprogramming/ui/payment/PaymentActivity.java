@@ -1,4 +1,4 @@
-package com.example.aol_mobileprogramming.payment;
+package com.example.aol_mobileprogramming.ui.payment;
 
 import android.os.Bundle;
 

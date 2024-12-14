@@ -1,4 +1,4 @@
-package com.example.aol_mobileprogramming.register;
+package com.example.aol_mobileprogramming.ui.register;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.aol_mobileprogramming.R;
-import com.example.aol_mobileprogramming.login.LoginActivity;
+import com.example.aol_mobileprogramming.ui.login.LoginActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 

@@ -13,19 +13,23 @@
         android:theme="@style/Theme.AOL_MobileProgramming"
         tools:targetApi="31">
         <activity
-            android:name=".payment.PaymentActivity"
+            android:name=".ui.bottomnav.BottomNavbarActivity"
+            android:exported="false"
+            android:label="@string/title_activity_bottom_navbar" />
+        <activity
+            android:name=".ui.payment.PaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".cart.CartActivity"
+            android:name=".ui.cart.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".register.RegisterActivity"
+            android:name=".ui.register.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".login.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

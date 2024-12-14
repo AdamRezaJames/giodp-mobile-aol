@@ -1,4 +1,4 @@
-package com.example.aol_mobileprogramming.cart;
+package com.example.aol_mobileprogramming.ui.cart;
 
 import android.os.Bundle;
 
