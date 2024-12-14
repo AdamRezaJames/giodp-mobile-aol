@@ -1,12 +1,15 @@
 package com.example.aol_mobileprogramming.ui.bottomnav;
 
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -24,14 +27,23 @@ public class BottomNavbarActivity extends AppCompatActivity {
         binding = ActivityBottomNavbarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+//        BottomNavigationView navView = findViewById(R.id.nav_view);
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_bottom_navbar);
+
+        NavController navController = ((NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_activity_bottom_navbar))
+                .getNavController();
+
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_bottom_navbar);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
+        ActionBar bar = this.getSupportActionBar();
+        if (bar != null) {
+            bar.hide();
+        }
+
+//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
