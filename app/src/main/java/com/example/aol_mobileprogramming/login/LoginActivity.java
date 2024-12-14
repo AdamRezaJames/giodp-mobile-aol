@@ -12,6 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.aol_mobileprogramming.MainActivity;
 import com.example.aol_mobileprogramming.R;
 import com.example.aol_mobileprogramming.register.RegisterActivity;
 
@@ -35,6 +36,12 @@ public class LoginActivity extends AppCompatActivity {
         registerQuestion = findViewById(R.id.registerQuestion);
         registerQuestion.setOnClickListener(v -> {
             Intent in = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(in);
+        });
+
+        loginButton = findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(v -> {
+            Intent in = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(in);
         });
 
