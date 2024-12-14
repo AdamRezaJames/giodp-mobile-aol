@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -12,15 +13,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.aol_mobileprogramming.MainActivity;
 import com.example.aol_mobileprogramming.R;
+import com.example.aol_mobileprogramming.ui.bottomnav.BottomNavbarActivity;
 import com.example.aol_mobileprogramming.ui.register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
     TextView loginText, emailText, passText, registerQuestion;
     EditText emailAddressInput, passInput;
-    Button loginButton, googleButton;
+    Button loginButton;
+    LinearLayout googleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,13 @@ public class LoginActivity extends AppCompatActivity {
 
         loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(v -> {
-            Intent in = new Intent(LoginActivity.this, MainActivity.class);
+            Intent in = new Intent(LoginActivity.this, BottomNavbarActivity.class);
+            startActivity(in);
+        });
+
+        googleButton = findViewById(R.id.googleButton);
+        googleButton.setOnClickListener(v -> {
+            Intent in = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(in);
         });
 
