@@ -11,39 +11,61 @@
         android:id="@+id/imageDetail"
         android:layout_width="379dp"
         android:layout_height="159dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/titleDetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/titleDetail"
         android:layout_width="60dp"
         android:layout_height="21dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="13dp"
-        tools:layout_editor_absoluteY="195dp" />
+        app:layout_constraintEnd_toStartOf="@+id/priceDetail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageDetail" />
 
     <TextView
         android:id="@+id/descDetail"
         android:layout_width="383dp"
         android:layout_height="128dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="13dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="13dp"
-        tools:layout_editor_absoluteY="229dp" />
+        app:layout_constraintBottom_toTopOf="@+id/buyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleDetail" />
 
     <TextView
         android:id="@+id/priceDetail"
         android:layout_width="312dp"
         android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="195dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/titleDetail"
+        app:layout_constraintTop_toBottomOf="@+id/imageDetail" />
 
     <Button
         android:id="@+id/buyButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="370dp" />
+        android:layout_marginTop="13dp"
+        android:text="Beli / gausah ada"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descDetail" />
 </androidx.constraintlayout.widget.ConstraintLayout>
