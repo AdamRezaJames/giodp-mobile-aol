@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -30,26 +31,38 @@
 
         <TextView
             android:id="@+id/textJudul"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="113dp"
+            android:layout_height="24dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:text="Title"
-            android:textStyle="bold"
             android:textSize="16sp"
-            app:layout_constraintTop_toTopOf="@id/imageItem"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/imageItem"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/imageItem" />
+
+        <TextView
+            android:id="@+id/textPrice"
+            android:layout_width="150dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="18dp"
+            android:text="Price"
+            app:layout_constraintBottom_toTopOf="@id/textDesc"
+            app:layout_constraintStart_toEndOf="@+id/imageItem"
+            app:layout_constraintTop_toBottomOf="@id/textJudul" />
 
         <TextView
             android:id="@+id/textDesc"
-            android:layout_width="210dp"
-            android:layout_height="63dp"
+            android:layout_width="207dp"
+            android:layout_height="39dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="28dp"
             android:text="Description"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/imageItem"
             app:layout_constraintTop_toBottomOf="@id/textJudul" />
 

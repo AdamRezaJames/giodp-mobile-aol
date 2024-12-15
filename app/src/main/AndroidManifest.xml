@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AOL_MobileProgramming"
         tools:targetApi="31">
         <activity
+            android:name=".ui.coursedetail.CourseDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.bottomnav.BottomNavbarActivity"
             android:exported="false"
             android:label="@string/title_activity_bottom_navbar" />
