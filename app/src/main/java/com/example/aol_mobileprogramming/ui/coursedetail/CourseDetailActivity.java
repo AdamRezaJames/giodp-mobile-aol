@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.aol_mobileprogramming.R;
+import com.example.aol_mobileprogramming.ui.db.DBManager;
 
 public class CourseDetailActivity extends AppCompatActivity {
 
@@ -42,6 +44,13 @@ public class CourseDetailActivity extends AppCompatActivity {
         String price = getIntent().getStringExtra("price");
         String formattedPrice = "Rp. " + price;
         priceDetail.setText(formattedPrice);
+
+        buyButton.setOnClickListener(v -> {
+            DBManager dbManager = new DBManager(CourseDetailActivity.this);
+            dbManager.addTransaction(1, getIntent().getIntExtra("course_id", -1));
+            dbManager.close();
+            Toast.makeText(this, "Product added to cart!", Toast.LENGTH_SHORT).show();
+        });
 
     }
 }

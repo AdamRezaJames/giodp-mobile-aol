@@ -49,6 +49,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
         holder.cardConstraintLayoutListItem1.setOnClickListener(v -> {
             Intent detailActivity = new Intent(activityContext, CourseDetailActivity.class);
             detailActivity.putExtra("name", data.getName());
+            detailActivity.putExtra("course_id", data.getId());
             detailActivity.putExtra("description", data.getDescription());
             detailActivity.putExtra("image", data.getImage());
             detailActivity.putExtra("price", data.getPrice());

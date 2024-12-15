@@ -1,5 +1,6 @@
 package com.example.aol_mobileprogramming.ui.db;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -249,6 +250,15 @@ public class DBManager {
         open();
         String sql = "DELETE FROM `transaction` WHERE id = ?";
         db.execSQL(sql, new String[]{String.valueOf(id)});
+        close();
+    }
+
+    public void pay(int userId, List<Transaction> transactionsList) {
+        open();
+        for (Transaction transaction : transactionsList) {
+            String sql = "UPDATE `transaction` SET status = 1 WHERE user_id = ? AND course_id = ?";
+            db.execSQL(sql, new String[]{String.valueOf(userId), String.valueOf(transaction.getCourse().getId())});
+        }
         close();
     }
 
