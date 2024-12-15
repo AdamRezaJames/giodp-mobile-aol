@@ -1,12 +1,13 @@
 package com.example.aol_mobileprogramming.ui.models;
 
 public class Course {
-    private int id, image;
+    private int id;
+    private Integer image;
     private String name;
     private String description;
     private String price;
 
-    public Course(int id, int image, String name, String description, String price) {
+    public Course(int id, String name, String description, String price, Integer image) {
         this.id = id;
         this.image = image;
         this.name = name;
@@ -18,7 +19,7 @@ public class Course {
         return id;
     }
 
-    public int getImage() {
+    public Integer getImage() {
         return image;
     }
 

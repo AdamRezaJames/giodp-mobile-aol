@@ -126,7 +126,7 @@ public class DBManager {
             return null;
         }
         c.moveToFirst();
-        Course course = new Course(c.getInt(0), c.getString(1), c.getString(2), c.getString(3));
+        Course course = new Course(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4));
         c.close();
         close();
         return course;
@@ -143,7 +143,7 @@ public class DBManager {
         c.moveToFirst();
         List<Course> courses = new ArrayList<>();
         while (!c.isAfterLast()) {
-            Course course = new Course(c.getInt(0), c.getString(1), c.getString(2), c.getString(3));
+            Course course = new Course(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4));
             courses.add(course);
             c.moveToNext();
         }
@@ -175,7 +175,7 @@ public class DBManager {
             return null;
         }
         c.moveToFirst();
-        Transaction transaction = new Transaction(c.getInt(0), new User(c.getInt(1), null, null, null), new Course(c.getInt(2), null, null, null), c.getInt(3) == 1);
+        Transaction transaction = new Transaction(c.getInt(0), new User(c.getInt(1), null, null, null), new Course(c.getInt(2), null, null, null, null), c.getInt(3) == 1);
         c.close();
         close();
         return transaction;
@@ -197,7 +197,7 @@ public class DBManager {
             return null;
         }
         c.moveToFirst();
-        Transaction transaction = new Transaction(c.getInt(0), new User(c.getInt(1), null, null, null), new Course(c.getInt(2), null, null, null), c.getInt(3) == 1);
+        Transaction transaction = new Transaction(c.getInt(0), new User(c.getInt(1), null, null, null), new Course(c.getInt(2), null, null, null, null), c.getInt(3) == 1);
         c.close();
         close();
         return transaction;
@@ -221,7 +221,7 @@ public class DBManager {
         c.moveToFirst();
         List<Transaction> transactions = new ArrayList<>();
         while (!c.isAfterLast()) {
-            Transaction transaction = new Transaction(c.getInt(0), new User(c.getInt(1), null, null, null), new Course(c.getInt(2), null, null, null), c.getInt(3) == 1);
+            Transaction transaction = new Transaction(c.getInt(0), new User(c.getInt(1), null, null, null), new Course(c.getInt(2), null, null, null, null), c.getInt(3) == 1);
             transactions.add(transaction);
             c.moveToNext();
         }
