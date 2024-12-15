@@ -7,17 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.bottomnav.ui.home.HomeFragment">
 
-
+    <!-- Parent Linear Layout -->
     <LinearLayout
+        android:id="@+id/linearLayoutParent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/linearLayoutParent"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!-- Top Section with Welcome Text and Cart Icon -->
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
@@ -26,11 +27,9 @@
             android:layout_marginBottom="2dp"
             android:paddingHorizontal="10dp"
             android:paddingTop="10dp"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toTopOf="@id/linearLayoutParent"
-            app:layout_constraintStart_toStartOf="@id/linearLayoutParent"
-            app:layout_constraintEnd_toEndOf="@id/linearLayoutParent">
+            android:orientation="horizontal">
 
+            <!-- Left: Welcome Text -->
             <LinearLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="0dp"
@@ -41,18 +40,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Selamat Datang,"
-                    android:textSize="12sp" />
+                    android:text="Welcome to GreatGio Courses"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/userText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="User"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="Discover top courses today!"
+                    android:textSize="12sp"
+                    android:textColor="#666666" />
             </LinearLayout>
 
+            <!-- Right: Cart Button -->
             <ImageButton
                 android:id="@+id/cartButton"
                 android:layout_width="48dp"
@@ -65,18 +66,26 @@
                 app:tint="@color/black" />
         </LinearLayout>
 
+        <!-- Subtitle Section -->
+        <TextView
+            android:id="@+id/sectionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Popular Courses"
+            android:textColor="#5DB996"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- RecyclerView for Course List -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewLayoutHome"
             android:layout_width="match_parent"
-            android:paddingHorizontal="10dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="1dp"
+            android:layout_margin="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
+            app:layout_constraintTop_toBottomOf="@id/linearLayout1" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

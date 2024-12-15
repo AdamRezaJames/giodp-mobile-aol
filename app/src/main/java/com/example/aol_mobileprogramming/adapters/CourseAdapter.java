@@ -43,7 +43,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
         Course data = courseList.get(position);
         holder.textJudul.setText(data.getName());
         holder.textDesc.setText(data.getDescription());
-        holder.textPrice.setText(data.getPrice());
+        String formattedPrice = "Rp. " + data.getPrice();
+        holder.textPrice.setText(formattedPrice);
         holder.imageItem.setImageResource(data.getImage());
         holder.cardConstraintLayoutListItem1.setOnClickListener(v -> {
             Intent detailActivity = new Intent(activityContext, CourseDetailActivity.class);

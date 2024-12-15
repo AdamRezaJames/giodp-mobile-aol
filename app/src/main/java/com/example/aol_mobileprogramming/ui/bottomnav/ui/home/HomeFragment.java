@@ -19,6 +19,7 @@ import com.example.aol_mobileprogramming.R;
 import com.example.aol_mobileprogramming.adapters.CourseAdapter;
 import com.example.aol_mobileprogramming.databinding.FragmentHomeBinding;
 import com.example.aol_mobileprogramming.ui.cart.CartActivity;
+import com.example.aol_mobileprogramming.ui.db.DBManager;
 import com.example.aol_mobileprogramming.ui.models.Course;
 
 import java.util.ArrayList;
@@ -30,14 +31,7 @@ public class HomeFragment extends Fragment {
     LinearLayout layout1, layout2, layoutparent;
     RecyclerView recyclerViewLayoutHome;
     ImageButton cartButton;
-
-    private List<Course> getCourses(int num){
-        List<Course> list = new ArrayList<>();
-        for (int i = 0; i<num; i++){
-            list.add(new Course(i+1,"name" + (i+1),"desc" + (i+1), "price" + (i+1), R.drawable.books));
-        }
-        return list;
-    }
+    DBManager dbManager;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -49,7 +43,7 @@ public class HomeFragment extends Fragment {
 
         recyclerViewLayoutHome = binding.recyclerViewLayoutHome;
         recyclerViewLayoutHome.setLayoutManager(new LinearLayoutManager(getContext()));
-        CourseAdapter adapter = new CourseAdapter(getCourses(10));
+        CourseAdapter adapter = new CourseAdapter(new DBManager(getContext()).getCourses());
         recyclerViewLayoutHome.setAdapter(adapter);
 
         return root;

@@ -39,7 +39,9 @@ public class CourseDetailActivity extends AppCompatActivity {
         imageDetail.setImageResource(getIntent().getIntExtra("image", 0));
         descDetail.setText(getIntent().getStringExtra("description"));
         titleDetail.setText(getIntent().getStringExtra("name"));
-        priceDetail.setText(getIntent().getStringExtra("price"));
+        String price = getIntent().getStringExtra("price");
+        String formattedPrice = "Rp. " + price;
+        priceDetail.setText(formattedPrice);
 
     }
 }

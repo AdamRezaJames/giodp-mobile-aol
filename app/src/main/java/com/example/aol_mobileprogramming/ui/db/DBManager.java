@@ -3,6 +3,7 @@ package com.example.aol_mobileprogramming.ui.db;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 

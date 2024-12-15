@@ -12,7 +12,7 @@ import com.example.aol_mobileprogramming.R;
 public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(@Nullable Context context) {
-        super(context, "GioDP", null, 1);
+        super(context, "GioDP", null, 3);
     }
 
     @Override
@@ -29,9 +29,9 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE IF NOT EXISTS courses (" +
                     "id INTEGER PRIMARY KEY, " +
                     "name TEXT, " +
-                    "image INTEGER, " +
                     "description TEXT, " +
-                    "price TEXT)");
+                    "price TEXT, " +
+                    "image INTEGER)");
 
             db.execSQL("CREATE TABLE IF NOT EXISTS `transaction` (" +
                     "id INTEGER PRIMARY KEY, " +
