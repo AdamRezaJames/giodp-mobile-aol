@@ -1,6 +1,9 @@
 package com.example.aol_mobileprogramming.ui.coursedetail;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +15,10 @@ import com.example.aol_mobileprogramming.R;
 
 public class CourseDetailActivity extends AppCompatActivity {
 
+    ImageView imageDetail;
+    TextView titleDetail, descDetail, priceDetail;
+    Button buyButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,5 +29,17 @@ public class CourseDetailActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        imageDetail = findViewById(R.id.imageDetail);
+        titleDetail = findViewById(R.id.titleDetail);
+        descDetail = findViewById(R.id.descDetail);
+        priceDetail = findViewById(R.id.priceDetail);
+        buyButton = findViewById(R.id.buyButton);
+
+        imageDetail.setImageResource(getIntent().getIntExtra("image", 0));
+        descDetail.setText(getIntent().getStringExtra("description"));
+        titleDetail.setText(getIntent().getStringExtra("name"));
+        priceDetail.setText(getIntent().getStringExtra("price"));
+
     }
 }

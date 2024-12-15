@@ -12,10 +12,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.aol_mobileprogramming.R;
+import com.example.aol_mobileprogramming.adapters.CourseAdapter;
 import com.example.aol_mobileprogramming.databinding.FragmentHomeBinding;
 import com.example.aol_mobileprogramming.ui.cart.CartActivity;
+import com.example.aol_mobileprogramming.ui.models.Course;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
@@ -24,6 +31,14 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerViewLayoutHome;
     ImageButton cartButton;
 
+    private List<Course> getCourses(int num){
+        List<Course> list = new ArrayList<>();
+        for (int i = 0; i<num; i++){
+            list.add(new Course(i+1,"name" + (i+1),"desc" + (i+1), "price" + (i+1), R.drawable.books));
+        }
+        return list;
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -31,6 +46,12 @@ public class HomeFragment extends Fragment {
             Intent in = new Intent(requireContext(), CartActivity.class);
             startActivity(in);
         });
+
+        recyclerViewLayoutHome = binding.recyclerViewLayoutHome;
+        recyclerViewLayoutHome.setLayoutManager(new LinearLayoutManager(getContext()));
+        CourseAdapter adapter = new CourseAdapter(getCourses(10));
+        recyclerViewLayoutHome.setAdapter(adapter);
+
         return root;
     }
 

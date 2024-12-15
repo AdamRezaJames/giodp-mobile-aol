@@ -1,5 +1,6 @@
 package com.example.aol_mobileprogramming.ui.bottomnav;
 
+import android.graphics.Insets;
 import android.os.Bundle;
 import android.widget.Toolbar;
 
@@ -7,6 +8,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
