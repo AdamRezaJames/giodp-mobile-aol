@@ -6,11 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aol_mobileprogramming.databinding.FragmentHomeBinding;
 import com.example.aol_mobileprogramming.ui.cart.CartActivity;
@@ -18,6 +20,9 @@ import com.example.aol_mobileprogramming.ui.cart.CartActivity;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    LinearLayout layout1, layout2, layoutparent;
+    RecyclerView recyclerViewLayoutHome;
+    ImageButton cartButton;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
