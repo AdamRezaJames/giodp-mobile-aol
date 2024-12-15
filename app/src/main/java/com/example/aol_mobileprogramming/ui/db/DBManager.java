@@ -163,12 +163,16 @@ public class DBManager {
 
     public Transaction getTransaction(int userId, int courseId, @Nullable Boolean paid) {
         open();
-        String sql = "SELECT * FROM `transaction` WHERE user_id = ? AND course_id = ?";
+        String sql = "SELECT t.id, t.user_id, t.course_id, t.status, " +
+                "c.name, c.description, c.price, c.image " +
+                "FROM `transaction` t " +
+                "INNER JOIN courses c ON t.course_id = c.id " +
+                "WHERE t.user_id = ? AND t.course_id = ?";
         if (paid != null) {
             if (paid) {
-                sql = "SELECT * FROM `transaction` WHERE user_id = ? AND course_id = ? AND status = 1";
+                sql += " AND t.status = 1";
             } else {
-                sql = "SELECT * FROM `transaction` WHERE user_id = ? AND course_id = ? AND status = 0";
+                sql += " AND t.status = 0";
             }
         }
         Cursor c = db.rawQuery(sql, new String[]{String.valueOf(userId), String.valueOf(courseId)});
@@ -177,7 +181,8 @@ public class DBManager {
             return null;
         }
         c.moveToFirst();
-        Transaction transaction = new Transaction(c.getInt(0), new User(c.getInt(1), null, null, null), new Course(c.getInt(2), null, null, null, null), c.getInt(3) == 1);
+        Course course = new Course(c.getInt(2),c.getString(4),c.getString(5),c.getString(6),c.getInt(7));
+        Transaction transaction = new Transaction(c.getInt(0),new User(c.getInt(1), null, null, null), course,c.getInt(3) == 1);
         c.close();
         close();
         return transaction;
@@ -207,12 +212,16 @@ public class DBManager {
 
     public List<Transaction> getTransactions(int userId, @Nullable Boolean paid) {
         open();
-        String sql = "SELECT * FROM `transaction` WHERE user_id = ?";
+        String sql = "SELECT t.id, t.user_id, t.course_id, t.status, " +
+                "c.name, c.description, c.price, c.image " +
+                "FROM `transaction` t " +
+                "INNER JOIN courses c ON t.course_id = c.id " +
+                "WHERE t.user_id = ?";
         if (paid != null) {
             if (paid) {
-                sql = "SELECT * FROM `transaction` WHERE user_id = ? AND status = 1";
+                sql += " AND t.status = 1";
             } else {
-                sql = "SELECT * FROM `transaction` WHERE user_id = ? AND status = 0";
+                sql += " AND t.status = 0";
             }
         }
         Cursor c = db.rawQuery(sql, new String[]{String.valueOf(userId)});
@@ -220,12 +229,11 @@ public class DBManager {
             c.close();
             return null;
         }
-        c.moveToFirst();
         List<Transaction> transactions = new ArrayList<>();
-        while (!c.isAfterLast()) {
-            Transaction transaction = new Transaction(c.getInt(0), new User(c.getInt(1), null, null, null), new Course(c.getInt(2), null, null, null, null), c.getInt(3) == 1);
+        while (c.moveToNext()) {
+            Course course = new Course(c.getInt(2),c.getString(4),c.getString(5),c.getString(6),c.getInt(7));
+            Transaction transaction = new Transaction(c.getInt(0),new User(c.getInt(1), null, null, null),course,c.getInt(3) == 1);
             transactions.add(transaction);
-            c.moveToNext();
         }
         c.close();
         close();
