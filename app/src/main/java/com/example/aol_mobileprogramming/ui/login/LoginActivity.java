@@ -1,8 +1,12 @@
 package com.example.aol_mobileprogramming.ui.login;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -11,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -20,6 +26,7 @@ import com.example.aol_mobileprogramming.ui.bottomnav.BottomNavbarActivity;
 import com.example.aol_mobileprogramming.ui.db.DBManager;
 import com.example.aol_mobileprogramming.ui.models.User;
 import com.example.aol_mobileprogramming.ui.register.RegisterActivity;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,6 +35,24 @@ public class LoginActivity extends AppCompatActivity {
     Button loginButton;
     LinearLayout googleButton;
     DBManager dbManager;
+
+    private void generateToken() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(v -> {
+            if (v.isSuccessful()) {
+                Log.d("LoginActiv", "generateToken: " + v.getResult());
+            }
+        });
+    }
+
+    private void requestPermission(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+            if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this, new String[]{
+                        Manifest.permission.POST_NOTIFICATIONS,
+                },100);
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +64,8 @@ public class LoginActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        requestPermission();
+        generateToken();
 
         passInput = findViewById(R.id.passInput);
         loginButton = findViewById(R.id.loginButton);
