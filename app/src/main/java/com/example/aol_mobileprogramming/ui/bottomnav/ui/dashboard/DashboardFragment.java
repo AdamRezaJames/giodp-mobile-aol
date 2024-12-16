@@ -1,5 +1,6 @@
 package com.example.aol_mobileprogramming.ui.bottomnav.ui.dashboard;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,8 +34,17 @@ public class DashboardFragment extends Fragment {
         recyclerViewPaidCourses = binding.recyclerViewPaidCourses;
         recyclerViewPaidCourses.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPrefs", getContext().MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("user_id", -1);
+
+        if (userId == -1) {
+            binding.emptyDashboardText.setText("Error: User not logged in!");
+            binding.emptyDashboardText.setVisibility(View.VISIBLE);
+            return root;
+        }
+
         DBManager dbManager = new DBManager(getContext());
-        List<Transaction> paidTransactions = dbManager.getTransactions(1, true);
+        List<Transaction> paidTransactions = dbManager.getTransactions(userId, true);
         List<Course> paidCourses = new ArrayList<>();
 
         if (paidTransactions != null) {

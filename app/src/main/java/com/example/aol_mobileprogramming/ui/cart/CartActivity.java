@@ -1,9 +1,11 @@
 package com.example.aol_mobileprogramming.ui.cart;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,13 +37,22 @@ public class CartActivity extends AppCompatActivity {
             return insets;
         });
 
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("user_id", -1);
+
+        if (userId == -1) {
+            Toast.makeText(this, "Error: User not logged in!", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
         RecyclerView cartRecyclerView = findViewById(R.id.recyclerViewCart);
         TextView emptyCartText = findViewById(R.id.emptyCartText);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationViewCart);
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         DBManager dbManager = new DBManager(this);
-        List<Transaction> transactionList = dbManager.getTransactions(1, false);
+        List<Transaction> transactionList = dbManager.getTransactions(userId, false);
 
         if (transactionList == null || transactionList.isEmpty()) {
             emptyCartText.setVisibility(View.VISIBLE);
@@ -60,9 +71,9 @@ public class CartActivity extends AppCompatActivity {
                 if (adapter != null) {
 
                     List<Transaction> trueTransactions = adapter.getCheckedTransactions();
-                    dbManager.pay(1, trueTransactions);
+                    dbManager.pay(userId, trueTransactions);
 
-                    List<Transaction> updatedList = dbManager.getTransactions(1, false);
+                    List<Transaction> updatedList = dbManager.getTransactions(userId, false);
 
                     if (updatedList == null || updatedList.isEmpty()) {
                         emptyCartText.setVisibility(View.VISIBLE);

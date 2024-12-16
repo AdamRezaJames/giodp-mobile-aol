@@ -1,5 +1,6 @@
 package com.example.aol_mobileprogramming.ui.coursedetail;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -45,8 +46,16 @@ public class CourseDetailActivity extends AppCompatActivity {
         String formattedPrice = "Rp. " + price;
         priceDetail.setText(formattedPrice);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("user_id", -1);
+
+        if (userId == -1) {
+            Toast.makeText(this, "Error: User not logged in!", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
         int course_id = getIntent().getIntExtra("course_id", -1);
-        int userId = 1;
         DBManager dbManager = new DBManager(this);
 
         if (dbManager.getTransaction(userId, course_id, false) != null) {
