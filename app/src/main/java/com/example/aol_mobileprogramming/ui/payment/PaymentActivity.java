@@ -2,6 +2,7 @@ package com.example.aol_mobileprogramming.ui.payment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
@@ -14,6 +15,14 @@ import com.example.aol_mobileprogramming.R;
 import com.example.aol_mobileprogramming.ui.bottomnav.BottomNavbarActivity;
 
 public class PaymentActivity extends AppCompatActivity {
+
+    private void navigateDashboard(){
+        Intent intent = new Intent(PaymentActivity.this, BottomNavbarActivity.class);
+        intent.putExtra("navigate_to", "DashboardFragment");
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +38,15 @@ public class PaymentActivity extends AppCompatActivity {
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                Intent intent = new Intent(PaymentActivity.this, BottomNavbarActivity.class);
-                intent.putExtra("navigate_to", "DashboardFragment");
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-                finish();
+                navigateDashboard();
             }
         };
         getOnBackPressedDispatcher().addCallback(this, callback);
+
+        Button goBackButton = findViewById(R.id.goBackButton);
+        goBackButton.setOnClickListener(v -> {
+            navigateDashboard();
+        });
+
     }
 }
