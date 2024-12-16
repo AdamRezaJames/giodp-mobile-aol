@@ -45,12 +45,24 @@ public class CourseDetailActivity extends AppCompatActivity {
         String formattedPrice = "Rp. " + price;
         priceDetail.setText(formattedPrice);
 
-        buyButton.setOnClickListener(v -> {
-            DBManager dbManager = new DBManager(CourseDetailActivity.this);
-            dbManager.addTransaction(1, getIntent().getIntExtra("course_id", -1));
-            dbManager.close();
-            Toast.makeText(this, "Product added to cart!", Toast.LENGTH_SHORT).show();
-        });
+        int course_id = getIntent().getIntExtra("course_id", -1);
+        int userId = 1;
+        DBManager dbManager = new DBManager(this);
+
+        if (dbManager.getTransaction(userId, course_id, false) != null) {
+            buyButton.setText("Product already in Cart");
+            buyButton.setEnabled(false);
+        } else if ((dbManager.getTransaction(userId, course_id, true) != null)){
+            buyButton.setText("Product already Bought");
+            buyButton.setEnabled(false);
+        } else {
+            buyButton.setOnClickListener(v -> {
+                dbManager.addTransaction(userId, course_id);
+                Toast.makeText(this, "Product added to cart!", Toast.LENGTH_SHORT).show();
+                buyButton.setText("Product already in Cart");
+                buyButton.setEnabled(false);
+            });
+        }
 
     }
 }
