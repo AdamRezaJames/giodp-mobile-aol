@@ -18,9 +18,9 @@ import com.example.aol_mobileprogramming.ui.login.LoginActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    TextView welcomeText, registerEmailText, registerPassText, loginQuestionText;
+    TextView welcomeText, registerEmailText, registerPassText, registerNameText, loginQuestionText;
     LinearLayout authGoogleButton;
-    EditText registerPassInput, registerEmailTextInput;
+    EditText registerPassInput, registerEmailTextInput, registerNameInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
