@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "938311864389",
+    "project_id": "gio-dp",
+    "storage_bucket": "gio-dp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938311864389:android:606339ff42a593a5ec532c",
+        "android_client_info": {
+          "package_name": "com.example.aol_mobileprogramming"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjLTZs9nGI7d_v5nHnz3utlENC5qSO_I8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
