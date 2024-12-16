@@ -55,11 +55,25 @@ public class CartActivity extends AppCompatActivity {
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.menu_checkout) {
+                CartAdapter adapter = (CartAdapter) cartRecyclerView.getAdapter();
 
-                CartAdapter adapter = new CartAdapter(transactionList);
-                List<Transaction> trueTransactions = adapter.getCheckedTransactions();
+                if (adapter != null) {
 
-                dbManager.pay(1, trueTransactions);
+                    List<Transaction> trueTransactions = adapter.getCheckedTransactions();
+                    dbManager.pay(1, trueTransactions);
+
+                    List<Transaction> updatedList = dbManager.getTransactions(1, false);
+
+                    if (updatedList == null || updatedList.isEmpty()) {
+                        emptyCartText.setVisibility(View.VISIBLE);
+                        cartRecyclerView.setVisibility(View.GONE);
+                        bottomNavigationView.setVisibility(View.GONE);
+                    } else {
+                        adapter = new CartAdapter(updatedList);
+                        cartRecyclerView.setAdapter(adapter);
+                    }
+                }
+
                 Intent in = new Intent(this, PaymentActivity.class);
                 startActivity(in);
                 return true;
