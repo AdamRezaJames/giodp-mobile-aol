@@ -27,11 +27,12 @@ public class BottomNavbarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         binding = ActivityBottomNavbarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-//        BottomNavigationView navView = findViewById(R.id.nav_view);
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_bottom_navbar);
 
         NavController navController = ((NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment_activity_bottom_navbar))
@@ -46,8 +47,13 @@ public class BottomNavbarActivity extends AppCompatActivity {
             bar.hide();
         }
 
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+        String navigateTo = getIntent().getStringExtra("navigate_to");
+        if ("DashboardFragment".equals(navigateTo)) {
+            navController.navigate(R.id.navigation_dashboard);
+        } else if ("HomeFragment".equals(navigateTo)) {
+            navController.navigate(R.id.navigation_home);
+        }
     }
 
 }
