@@ -30,9 +30,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    LinearLayout layout1, layout2, layoutparent;
     RecyclerView recyclerViewLayoutHome;
-    ImageButton cartButton;
     DBManager dbManager;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
