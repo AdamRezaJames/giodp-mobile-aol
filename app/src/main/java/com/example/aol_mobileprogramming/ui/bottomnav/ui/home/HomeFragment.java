@@ -50,7 +50,7 @@ public class HomeFragment extends Fragment {
                 binding.userNameText.setText(user.getName());
             }
         } else {
-            binding.userNameText.setText("Guest");
+            binding.userNameText.setText("Guest"); // yaudahlah guest
         }
 
         binding.cartButton.setOnClickListener(v -> {
