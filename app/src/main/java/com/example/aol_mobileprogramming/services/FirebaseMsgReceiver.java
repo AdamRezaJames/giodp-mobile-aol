@@ -11,6 +11,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.aol_mobileprogramming.R;
 import com.example.aol_mobileprogramming.ui.bottomnav.BottomNavbarActivity;
+import com.example.aol_mobileprogramming.ui.login.LoginActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -22,7 +23,12 @@ public class FirebaseMsgReceiver extends FirebaseMessagingService {
         if (message.getNotification() != null){
             String title = message.getNotification().getTitle();
             String body = message.getNotification().getBody();
-            sendNotification(title, body, new Intent(this, BottomNavbarActivity.class));
+            int userId = getSharedPreferences("UserPrefs", MODE_PRIVATE).getInt("user_id", -1);
+            if (userId != -1) {
+                sendNotification(title, body, new Intent(this, BottomNavbarActivity.class));
+            } else {
+                sendNotification(title, body, new Intent(this, LoginActivity.class));
+            }
         }
     }
 
