@@ -33,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
     TextView registerQuestion;
     EditText emailAddressInput, passInput;
     Button loginButton;
-    LinearLayout googleButton;
     DBManager dbManager;
 
     private void generateToken() {
@@ -69,7 +68,6 @@ public class LoginActivity extends AppCompatActivity {
 
         passInput = findViewById(R.id.passInput);
         loginButton = findViewById(R.id.loginButton);
-        googleButton = findViewById(R.id.googleButton);
         registerQuestion = findViewById(R.id.registerQuestion);
         emailAddressInput = findViewById(R.id.emailAddressInput);
         dbManager = new DBManager(this);
@@ -103,11 +101,6 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
             }
-        });
-
-        googleButton.setOnClickListener(v -> {
-            Intent in = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivity(in);
         });
 
     }

@@ -24,7 +24,6 @@ import com.example.aol_mobileprogramming.ui.models.User;
 public class RegisterActivity extends AppCompatActivity {
 
     TextView loginQuestionText;
-    LinearLayout authGoogleButton;
     EditText registerPassInput, registerEmailTextInput, registerNameInput;
     DBManager dbManager;
     Button registerButton;
@@ -40,7 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
             return insets;
         });
 
-        authGoogleButton = findViewById(R.id.authGoogleButton);
         registerPassInput = findViewById(R.id.registerPassInput);
         registerNameInput = findViewById(R.id.registerNameInput);
         registerButton = findViewById(R.id.registerButton);

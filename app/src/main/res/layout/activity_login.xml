@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,174 +8,67 @@
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginActivity">
 
-    <TextView
-        android:id="@+id/loginText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="335dp"
-        android:text="Login to GreatGio"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/emailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/loginText"
-        android:text="Email"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/emailAddressInput"
-        android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emailText"
-        android:background="@drawable/text_border"
-        android:layout_marginTop="10dp"
-        android:hint="hello@company.com"
-        android:textSize="14sp"
-        android:paddingHorizontal="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"/>
-
-    <TextView
-        android:id="@+id/passText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/emailAddressInput"
-        android:text="Password"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/passInput"
-        android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passText"
-        android:background="@drawable/text_border"
-        android:layout_marginTop="10dp"
-        android:textSize="14sp"
+        android:orientation="vertical"
+        android:gravity="center"
         android:paddingHorizontal="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"/>
-
-    <TextView
-        android:id="@+id/registerQuestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="196dp"
-        android:text="@string/register_question"
-        android:textColor="#6F9962"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passInput" />
-
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:text="Login"
-        android:backgroundTint="@color/black"
-        android:textColor="@color/white"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerQuestion"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-         />
-
-    <LinearLayout
-        android:id="@+id/linearLayoutOR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/loginButton"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="16dp"
-        android:gravity="center"
-        >
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@color/black"
-            android:layout_weight="1"
-        />
-        <TextView
-            android:layout_marginHorizontal="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="OR"/>
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@color/black"
-            android:layout_weight="1"
-            />
-    </LinearLayout>
-
-<!--    <Button-->
-<!--        android:id="@+id/googleButton"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginHorizontal="16dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:backgroundTint="@color/black"-->
-<!--        android:text="Continue with Google"-->
-<!--        android:textColor="@color/white"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.562"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayoutOR"-->
-<!--        />-->
-
-    <LinearLayout
-        android:id="@+id/googleButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/black"
-        android:text="Continue with Google"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.562"
-        app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutOR"
-        android:background="@drawable/rounded_button_bg"
-        android:paddingVertical="12dp">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/gugellogo"
-            android:layout_marginEnd="8dp" />
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
+            android:id="@+id/loginText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Continue with Google"
+            android:text="Login to GreatGio"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <EditText
+            android:id="@+id/emailAddressInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="hello@company.com"
+            android:background="@drawable/text_border"
+            android:paddingHorizontal="10dp"
+            android:textSize="16sp"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/passInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Password"
+            android:background="@drawable/text_border"
+            android:layout_marginTop="12dp"
+            android:paddingHorizontal="10dp"
+            android:textSize="16sp"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:text="Login"
+            android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="16sp" />
-    </LinearLayout>
+            android:backgroundTint="@color/black" />
 
+        <TextView
+            android:id="@+id/registerQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Don't have an account? Register"
+            android:textSize="14sp"
+            android:textColor="#6F9962"
+            android:gravity="center" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
